@@ -1,0 +1,294 @@
+﻿@model Generator.Models.DungeonParameters
+@{
+    ViewBag.Title = "Dungeon.css";
+}
+
+<div class="row">
+
+    <style>
+        .label {
+            color: #333;
+        }
+
+        .dungeon input[type='text'], .dungeon .editor-label input {
+            width: 50px;
+        }
+
+        .dungeon input[type='color'] {
+            width: 65px;
+        }
+
+        select, input[type='color'] {
+            border: 3px solid #CCC;
+            border-radius: 5px;
+        }
+
+        select {
+            padding: 5px;
+        }
+
+        input[type='color'] {
+            height: 35px;
+        }
+
+        #form1 td {
+            background: none !important;
+            padding-right: 10px;
+        }
+
+        #form1 td.label {
+            text-align: right;
+        }
+    </style>
+    <link href='/content/dungeon/print.css' type='text/css' rel='stylesheet' media="print" />
+    <article class='dungeon'>
+        <div id='title-container'>
+            <h1>
+                Dungeon.css: Generate @Model.Theme
+            </h1>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <fieldset>
+                <table id='form1'>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td colspan=3>
+                                <h2>Maze Details</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class='label'>
+                                @Html.LabelFor(model => model.Width)
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model.Width)
+                                @Html.ValidationMessageFor(model => model.Width)
+                            </td>
+                            <td class='label'>
+                                @Html.LabelFor(model => model.Height)
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model.Height)
+                                @Html.ValidationMessageFor(model => model.Height)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class='label'>
+                                @Html.LabelFor(model => model.Randomness)
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model.Randomness)
+                                @Html.ValidationMessageFor(model => model.Randomness)
+                            </td>
+                            <td class='label'>
+                                @Html.LabelFor(model => model.Sparseness)
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model.Sparseness)
+                                @Html.ValidationMessageFor(model => model.Sparseness)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class='label' colspan=3>@Html.LabelFor(model => model.ChanceToRemoveDeadends)</td>
+                            <td>
+                                @Html.EditorFor(model => model.ChanceToRemoveDeadends)
+                                @Html.ValidationMessageFor(model => model.ChanceToRemoveDeadends)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan=3>
+                                <h2>Room Details</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class='label'>
+                                @Html.LabelFor(model => model.MinRoomWidth)
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model.MinRoomWidth)
+                                @Html.ValidationMessageFor(model => model.MinRoomWidth)
+                            </td>
+                            <td class='label'>
+                                @Html.LabelFor(model => model.MaxRoomWidth)
+                            </td>
+                            <td>
+                                @Html.EditorFor(model => model.MaxRoomWidth)
+                                @Html.ValidationMessageFor(model => model.MaxRoomWidth)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class='label'>@Html.LabelFor(model => model.MinRoomHeight)</td>
+                            <td>
+                                @Html.EditorFor(model => model.MinRoomHeight)
+                                @Html.ValidationMessageFor(model => model.MinRoomHeight)
+                            </td>
+                            <td class='label'>@Html.LabelFor(model => model.MaxRoomHeight)</td>
+                            <td>
+                                @Html.EditorFor(model => model.MaxRoomHeight)
+                                @Html.ValidationMessageFor(model => model.MaxRoomHeight)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class='label'>@Html.LabelFor(model => model.RoomCount)</td>
+                            <td>
+                                @Html.EditorFor(model => model.RoomCount)
+                                @Html.ValidationMessageFor(model => model.RoomCount)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan=3>
+                                <h2>Appearance</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class='label'>@Html.LabelFor(model => model.CellSize)</td>
+                            <td>
+                                @Html.EditorFor(model => model.CellSize)
+                                @Html.ValidationMessageFor(model => model.CellSize)
+                            </td>
+                            <td class='label'>@Html.LabelFor(model => model.Theme)</td>
+                            <td>
+                                @Html.DropDownListFor(
+                    model => model.Theme,
+                    new SelectList(Model.Themes, "Value", "Text")
+                )
+                                @Html.ValidationMessageFor(model => model.Theme)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class='label'>@Html.LabelFor(model => model.RockColor)</td>
+                            <td>
+                                <input type='color' id=RockColor name=RockColor value='@Model.RockColor' />
+                                @Html.ValidationMessageFor(model => model.RockColor)
+                            </td>
+                            <td class='label'>@Html.LabelFor(model => model.FloorColor)</td>
+                            <td>
+                                <input type='color' id=FloorColor name=FloorColor value='@Model.FloorColor' />
+                                @Html.ValidationMessageFor(model => model.FloorColor)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--
+                            <pre>
+                            //TODO: Show values/meaning examples.
+                            //TODO:RoomCount By Percentage
+                            //TODO:Monsters.
+                            //TODO:Treaures.
+                            //TODO:Locks
+                            //TODO: Theme selection
+                    </pre>
+                    -->
+                <input type="submit" value="Generate!" />
+
+            </fieldset>
+        }
+        <link href='https://fonts.googleapis.com/css?family=Frijole' rel='stylesheet' type='text/css'>
+        <style>
+        article H1
+        {
+            font-family: 'Frijole' , cursive;
+            color: #615A56;
+            text-shadow: 2px 2px 5px #333;
+            padding-left:0;
+        }
+
+        #title-container H1
+        {
+            display: block;
+        }
+
+        article #title-container
+        {
+            background-color: @Model.RockColor;
+            background-image:url(/content/dungeon/@(Model.Theme)/image/rock.png);
+            background-repeat:repeat;
+            color: #fff;
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+        }
+
+        article #title-container h1
+        {
+            font-size: 60px;
+            -webkit-transition: text-shadow 1s ease;
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+        }
+        article #title-container
+        {
+            text-shadow: 2px 2px 0 #FF0;
+        }
+        </style>
+        <link href='/content/dungeon/@(Model.Theme)/style.css#3' type='text/css' rel='stylesheet' />
+        <style>
+        table.map.dungeon {
+            font-size:@(Model.CellSize / 2)px;
+        }
+        table.dungeon tr
+        {
+            display:block;
+            height: @(Model.CellSize)px;
+            line-height: @(Model.CellSize / 2)px;
+        }
+        table.map.dungeon td
+        {
+            min-width: @(Model.CellSize)px;
+            min-height: @(Model.CellSize)px;
+            height: @(Model.CellSize)px;
+            width: @(Model.CellSize)px;
+            padding: 0;
+            padding-bottom:4px;
+            background-repeat: no-repeat;
+        }
+        table.dungeon td, .dungeon td div
+        {
+            background-size: contain !important; /* this causes the cell background to stretch, allowing for different cell size */
+        }
+
+        table.dungeon td div
+        {
+            line-height: @(Model.CellSize - 4)px;
+            height: @(Model.CellSize)px;
+            width: @(Model.CellSize)px;
+        }
+        table.dungeon td
+        {
+            background-color: @Model.FloorColor;
+        }
+        table.dungeon td.rock
+        {
+            background-color: @Model.RockColor;
+        }
+        </style>
+        <br />
+        <br />
+        @Html.Raw(ViewBag.DungeonTable)
+
+        @if (ViewBag.DungeonTable != null)
+        {
+            <div class='noprint'><p>Ready to print. TIP: If you print this page, only the map itself will be printed.</p></div>
+        }
+    </article>
+    <script type="text/javascript">
+        var themeColors = {
+            "Dungeon": { "floorColor": "#be9641", "rockColor": "#794a1c" },
+            "Castle": { "floorColor": "#c0c0c0", "rockColor": "#787b9c" },
+            "SpaceBase": { "floorColor": "#9350af", "rockColor": "#5a53b0" },
+            "Forest": { "floorColor": "#914800", "rockColor": "#006a00" }
+        }; /* more themes wanted!! Apply now!! */
+
+
+        $(document).ready(function () {
+            $("#Theme").on("change", function (e) {
+                var valueSelect = this.value;
+                $("#RockColor").val(themeColors[valueSelect].rockColor);
+                $("#FloorColor").val(themeColors[valueSelect].floorColor);
+            });
+        });
+    </script>
+</div>

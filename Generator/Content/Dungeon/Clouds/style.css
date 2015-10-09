@@ -1,0 +1,56 @@
+﻿/* 
+    DUNGEON.css   Table Layout is Medieval!
+    a dungeon is a table, with class dungeon. <table class='dungeon'>... 
+    a "filled in" cell: <td class='rock'></td>
+    a cell with walls to the north and west: <td class='north west'></td>
+    a cell with a door, and walls to the north and south: <td class='north south door'></td>
+    an empty cell (e.g. in the middle of a room): <td></td>
+*/
+
+table.dungeon {border-collapse:collapse;border:2px solid #000;}
+
+/* in this level/theme, rock is used to fill spaces. in other levels/themes, forest could be used, or bricks, etc. */
+td.rock { background-image:url(image/rock.png)}
+
+/* single walls */
+td.north { background-image:url(image/north_wall.png)}
+td.east { background-image:url(image/east_wall.png)}
+td.south { background-image:url(image/south_wall.png)}
+td.west { background-image:url(image/west_wall.png)}
+
+/* two walls... and (sometimes) a corner */
+td.north.east { background-image:url(image/north_wall.png),url(image/east_wall.png),url(image/ne.png)}
+td.north.west { background-image:url(image/north_wall.png),url(image/west_wall.png),url(image/nw.png)}
+td.north.south { background-image:url(image/north_wall.png),url(image/south_wall.png)}
+td.south.east { background-image:url(image/south_wall.png),url(image/east_wall.png),url(image/se.png)}
+td.south.west { background-image:url(image/south_wall.png),url(image/west_wall.png),url(image/sw.png)}
+td.east.west { background-image:url(image/west_wall.png),url(image/east_wall.png)}
+
+/* three walls, and 2 corners. */
+td.north.south.east { background-image:url(image/north_wall.png),url(image/south_wall.png),url(image/east_wall.png),url(image/ne.png),url(image/se.png)}
+td.north.south.west { background-image:url(image/north_wall.png),url(image/south_wall.png),url(image/west_wall.png),url(image/nw.png),url(image/sw.png)}
+td.north.east.west { background-image:url(image/north_wall.png),url(image/east_wall.png),url(image/west_wall.png),url(image/ne.png),url(image/nw.png)}
+td.south.east.west { background-image:url(image/south_wall.png),url(image/east_wall.png),url(image/west_wall.png),url(image/se.png),url(image/sw.png)}
+
+/* doors */
+td.door.east.west { background-image:url(image/door_ew.png),url(image/east_wall.png),url(image/west_wall.png)}
+td.door.north.south { background-image:url(image/door_ns.png),url(image/north_wall.png),url(image/south_wall.png)}
+
+/* some cells contain a div inside a td, in which case it can contain centered text. */
+td div {text-align:center;}
+/* Cells can contain Monster, Boxes, Entry, Exit, Potion, Gold... Hero! */
+.star { background-image:url(image/star.png);}
+.down { background-image:url(image/down.png);}
+.monster { background-image:url(image/monster.png);}
+.monster.dead { background-image:url(image/monster_dead.png);}
+.box { background-image:url(image/box.png);}
+.box.open { background-image:url(image/box_open.png);}
+.box.locked { background-image:url(image/box.png),(box_lock.png);}
+.key  { background-image:url(image/key.png);}
+.lock  { background-image:url(image/door_lock.png);} /* a door lock is a div inside a door, represented same for NS v EW.*/
+.hero { background-image:url(image/hero.png);}
+.potion{ background-image:url(image/potion.png);}
+.potion.health{ background-image:url(image/potion.png),url(image/health.png);}
+.potion.mana{ background-image:url(image/potion.png),url(image/mana.png);}
+.potion.poison{ background-image:url(image/potion.png),url(image/poison.png);}
+
