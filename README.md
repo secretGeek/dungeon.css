@@ -1,6 +1,6 @@
 # dungeon.css
 
-CSS-based dungeon themes (uses Karcero to generate dungeons/mazes)
+CSS-based dungeon themes (uses [Karcero](https://github.com/odedw/karcero) to generate dungeons/mazes)
 
 [Try it online!](http://wiki.secretGeek.net/dungeon/generate)
 
