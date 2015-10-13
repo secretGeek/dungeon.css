@@ -1,2 +1,2 @@
 ﻿header,#title-container,form,.noprint { display:none}
-table,tr,td {-webkit-print-color-adjust: exact;}
+table,tr,td {-webkit-print-color-adjust: exact !important;}

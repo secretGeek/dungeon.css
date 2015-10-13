@@ -228,7 +228,7 @@ table {
   * {
     color: #000 !important;
     text-shadow: none !important;
-    background: transparent !important;
+    /*background: transparent !important; wtf*/
     box-shadow: none !important;
   }
   a,

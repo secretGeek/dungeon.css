@@ -40,11 +40,11 @@
             text-align: right;
         }
     </style>
-    <link href='/content/dungeon/print.css' type='text/css' rel='stylesheet' media="print" />
+    <link href='/content/dungeon/print.css#1' type='text/css' rel='stylesheet' media="print" />
     <article class='dungeon'>
         <div id='title-container'>
             <h1>
-                Dungeon.css: Generate @Model.Theme
+                Generate @Model.Theme
             </h1>
         </div>
         @using (Html.BeginForm())
@@ -188,6 +188,8 @@
 
             </fieldset>
         }
+        </article>
+</div>
         <link href='https://fonts.googleapis.com/css?family=Frijole' rel='stylesheet' type='text/css'>
         <style>
         article H1
@@ -273,7 +275,7 @@
         {
             <div class='noprint'><p>Ready to print. TIP: If you print this page, only the map itself will be printed.</p></div>
         }
-    </article>
+    
     <script type="text/javascript">
         var themeColors = {
             "Dungeon": { "floorColor": "#be9641", "rockColor": "#794a1c" },
@@ -291,4 +293,3 @@
             });
         });
     </script>
-</div>
